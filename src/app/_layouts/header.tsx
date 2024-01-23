@@ -1,4 +1,5 @@
-import { AuthGoogleButton } from '@/components/auth/auth-google-button'
+import { HiddenBoxOnPath } from '@/components/ui/hidden-box-on-path'
+import { UserAuth } from '@/components/user/user-auth'
 
 export function Header() {
   return (
@@ -8,9 +9,9 @@ export function Header() {
           <h1 className="shrink-0 text-xl font-bold">Balay</h1>
           <div className="flex h-full flex-1 items-center justify-between">
             <nav>nav links here</nav>
-            <div>
-              <AuthGoogleButton />
-            </div>
+            <HiddenBoxOnPath path="/login">
+              <UserAuth />
+            </HiddenBoxOnPath>
           </div>
         </div>
       </div>
