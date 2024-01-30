@@ -1,8 +1,8 @@
 import { AuthGoogleButton } from '@/components/auth/auth-google-button'
 
-export default function AuthForm() {
+export function LoginForm() {
   return (
-    <div>
+    <div className="flex flex-col items-stretch gap-4">
       <AuthGoogleButton />
     </div>
   )

@@ -1,17 +1,29 @@
-import { HiddenBoxOnPath } from '@/components/ui/hidden-box-on-path'
+import { HiddenOnPath } from '@/components/ui/hidden-on-path'
 import { UserAuth } from '@/components/user/user-auth'
+import { cn } from '@/lib/utils/class-name'
+import Link from 'next/link'
 
-export function Header() {
+export interface HeaderProps {
+  light?: boolean
+}
+
+export function Header({ light }: HeaderProps) {
   return (
-    <header className="h-16">
-      <div className="container sticky h-full max-w-full shadow-md shadow-slate-300/50">
+    <header className="relative z-10 h-20">
+      <div
+        className={cn(
+          'container sticky h-full max-w-full border-neutral-200',
+          light ? 'text-white' : 'border-b'
+        )}>
         <div className="flex h-full items-center gap-4 py-4">
-          <h1 className="shrink-0 text-xl font-bold">Balay</h1>
+          <Link href="/" className="shrink-0 text-xl font-bold">
+            Balay
+          </Link>
           <div className="flex h-full flex-1 items-center justify-between">
             <nav>nav links here</nav>
-            <HiddenBoxOnPath path="/login">
+            <HiddenOnPath path="/login">
               <UserAuth />
-            </HiddenBoxOnPath>
+            </HiddenOnPath>
           </div>
         </div>
       </div>
