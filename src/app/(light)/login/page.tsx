@@ -1,6 +1,13 @@
 import LoginPageBG from '@/assets/images/login-bg.png'
 import { LoginForm } from '@/components/forms/login-form'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card'
 import type { Metadata } from 'next'
 import Image from 'next/image'
 
@@ -29,6 +36,11 @@ export default function LoginPage() {
           <CardContent>
             <LoginForm />
           </CardContent>
+          <CardFooter>
+            <p className="text-xs font-light text-slate-500">
+              By continuing, you agree to Balay&apos;s Terms of User. Read our Privacy Policy
+            </p>
+          </CardFooter>
         </Card>
       </div>
     </main>
