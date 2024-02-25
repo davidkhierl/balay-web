@@ -7,7 +7,7 @@ export interface HeaderProps {
   light?: boolean
 }
 
-export function Header({ light }: HeaderProps) {
+export function AppHeader({ light }: HeaderProps) {
   return (
     <header className="relative z-10 h-20">
       <div
