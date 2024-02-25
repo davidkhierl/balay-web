@@ -19,6 +19,21 @@ const config = {
       },
     },
     extend: {
+      colors: {
+        violet: {
+          50: '#F6F6FC',
+          100: '#EFEEF9',
+          200: '#E1DFF5',
+          300: '#C9C5ED',
+          400: '#ADA3E2',
+          500: '#907ED4',
+          600: '#7F64C7',
+          700: '#6C4FB2',
+          800: '#5A4295',
+          900: '#4B377B',
+          950: '#2E2352',
+        },
+      },
       fontFamily: {
         sans: ['var(--font-poppins)', ...defaultTheme.fontFamily.sans],
       },
