@@ -1,9 +1,21 @@
+import { AppHeader } from '@/app/_layouts/app-header'
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Poppins, Roboto } from 'next/font/google'
 import * as React from 'react'
 import './globals.css'
 
-const inter = Inter({ subsets: ['latin'] })
+const roboto = Roboto({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-roboto',
+  weight: ['300', '400', '500', '700'],
+})
+const poppins = Poppins({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-poppins',
+  weight: ['300', '400', '500', '700'],
+})
 
 export const metadata: Metadata = {
   title: 'Balay',
@@ -13,7 +25,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={`${roboto.variable} ${poppins.variable}`}>
+        <AppHeader />
+        {children}
+      </body>
     </html>
   )
 }

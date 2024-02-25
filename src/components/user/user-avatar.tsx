@@ -26,7 +26,6 @@ export interface UserAvatarProps
 async function UserAvatarFn({ className }: { className?: string }) {
   const user = await getUser()
 
-  console.log(user?.avatar_url)
   if (!user)
     return (
       <div
