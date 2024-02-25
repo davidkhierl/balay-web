@@ -20,7 +20,6 @@ const config = {
     },
     extend: {
       fontFamily: {
-        display: ['var(--font-roboto)'],
         sans: ['var(--font-poppins)', ...defaultTheme.fontFamily.sans],
       },
       keyframes: {
