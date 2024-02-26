@@ -1,4 +1,4 @@
-import { AppHeader } from '@/app/_layouts/app-header'
+import { AppHeader } from '@/components/layouts/app-header'
 import type { Metadata } from 'next'
 import { Poppins } from 'next/font/google'
 import * as React from 'react'
