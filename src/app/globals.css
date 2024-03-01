@@ -4,6 +4,6 @@
 
 @layer base {
     html, body {
-        height: 100%;
+        @apply h-full font-sans
     }
 }
