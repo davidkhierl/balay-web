@@ -1,7 +1,6 @@
 import BalayLogo from '@/assets/icons/balay-logo.svg'
 import { UserAuth } from '@/components/user/user-auth'
 import { cn } from '@/lib/utils/class-name'
-import Image from 'next/image'
 import Link from 'next/link'
 
 export interface HeaderProps {
@@ -17,8 +16,8 @@ export function AppHeader({ className }: HeaderProps) {
           className
         )}>
         <div className="max-w-24">
-          <Link href="/" className="shrink-0 text-xl font-bold">
-            <Image src={BalayLogo} alt="Balay logo" priority />
+          <Link href="/" className="shrink-0 text-xl font-bold text-violet-900">
+            <BalayLogo className="w-full" />
             <span className="sr-only">Balay home page</span>
           </Link>
         </div>

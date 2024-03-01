@@ -1,15 +1,8 @@
-import { AppHeader } from '@/app/_layouts/app-header'
 import type { Metadata } from 'next'
-import { Poppins, Roboto } from 'next/font/google'
+import { Poppins } from 'next/font/google'
 import * as React from 'react'
 import './globals.css'
 
-const roboto = Roboto({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-roboto',
-  weight: ['300', '400', '500', '700'],
-})
 const poppins = Poppins({
   subsets: ['latin'],
   display: 'swap',
@@ -25,10 +18,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className={`${roboto.variable} ${poppins.variable}`}>
-        <AppHeader />
-        {children}
-      </body>
+      <body className={`${poppins.variable}`}>{children}</body>
     </html>
   )
 }

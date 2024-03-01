@@ -1,21 +1,20 @@
-import { createClient } from '@/lib/supabase/middleware'
+import { updateSession } from '@/lib/supabase/middleware'
 import type { NextRequest } from 'next/server'
 import { NextResponse } from 'next/server'
 
+const LOGIN_PATH = '/login'
+const HOME_PATH = '/'
+
 export async function middleware(request: NextRequest) {
-  const { supabase, response } = createClient(request)
+  const { auth, response } = await updateSession(request)
+  const user = auth.data.user
+  const requestedPathname = request.nextUrl.pathname
 
-  const {
-    data: { user },
-  } = await supabase.auth.getUser()
+  if (user && requestedPathname === LOGIN_PATH)
+    return NextResponse.redirect(new URL(HOME_PATH, request.url))
 
-  // redirect user to homepage when visiting to /login path
-  if (user && request.nextUrl.pathname === '/login')
-    return NextResponse.redirect(new URL('/', request.url))
-
-  // redirect to login page if not authenticated except for / path
-  if (!user && request.nextUrl.pathname !== '/login' && !user && request.nextUrl.pathname !== '/')
-    return NextResponse.redirect(new URL('/login', request.url))
+  if (!user && requestedPathname !== LOGIN_PATH && requestedPathname !== HOME_PATH)
+    return NextResponse.redirect(new URL(LOGIN_PATH, request.url))
 
   return response
 }

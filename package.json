@@ -18,9 +18,10 @@
     "@supabase/auth-ui-shared": "^0.1.8",
     "@supabase/ssr": "^0.1.0",
     "@supabase/supabase-js": "^2.39.7",
+    "@tanstack/react-table": "^8.13.2",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
-    "lucide-react": "^0.340.0",
+    "lucide-react": "^0.343.0",
     "next": "14.1.0",
     "react": "^18",
     "react-dom": "^18",
@@ -30,8 +31,9 @@
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
-    "@types/node": "^20.11.20",
-    "@types/react": "^18.2.58",
+    "@svgr/webpack": "^8.1.0",
+    "@types/node": "^20.11.24",
+    "@types/react": "^18.2.61",
     "@types/react-dom": "^18.2.19",
     "autoprefixer": "^10.0.1",
     "drizzle-kit": "^0.20.14",
