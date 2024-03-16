@@ -22,7 +22,9 @@ export function AppHeader({ className }: HeaderProps) {
           </Link>
         </div>
         <nav>nav links</nav>
-        <UserAuth />
+        <div className="flex items-center gap-2.5">
+          <UserAuth />
+        </div>
       </div>
     </header>
   )
