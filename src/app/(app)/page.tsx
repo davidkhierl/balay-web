@@ -6,7 +6,7 @@ import { createClient } from '@/lib/supabase/server'
 export default async function HomePage() {
   const supabase = createClient()
   const user = await getCurrentUser(supabase)
-  const { data: households, count } = await userHouseholds(user.id, supabase)
+  const { data: households } = await userHouseholds(user.id, supabase)
 
   if (!households?.length)
     return (
