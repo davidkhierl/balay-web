@@ -9,13 +9,12 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
 import { UserAvatarFallbackComponent } from '@/components/user/user-avatar-fallback-component'
-import { getUser } from '@/lib/services/get-user-ssr'
+import { getCurrentUser } from '@/lib/services/auth/get-current-user'
 import { createClient } from '@/lib/supabase/server'
 import { cn } from '@/lib/utils/class-name'
 import { getNameInitials } from '@/lib/utils/get-name-initials'
 import * as AvatarPrimitive from '@radix-ui/react-avatar'
-import { Frown, LogOut } from 'lucide-react'
-import { cookies } from 'next/headers'
+import { LogOut } from 'lucide-react'
 import { redirect } from 'next/navigation'
 import * as React from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
@@ -24,25 +23,15 @@ export interface UserAvatarProps
   extends React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Root> {}
 
 async function UserAvatarFn({ className }: { className?: string }) {
-  const user = await getUser()
-
-  if (!user)
-    return (
-      <div
-        title="No user found"
-        className="flex h-10 w-10 items-center justify-center rounded-full bg-red-100 text-red-700">
-        <Frown />
-        <span className="sr-only">Error loading user</span>
-      </div>
-    )
+  const supabase = createClient()
+  const user = await getCurrentUser(supabase)
 
   const initials = getNameInitials(user.full_name)
 
   const signOut = async () => {
     'use server'
 
-    const cookieStore = cookies()
-    const supabase = createClient(cookieStore)
+    const supabase = createClient()
     await supabase.auth.signOut()
     return redirect('/login')
   }
