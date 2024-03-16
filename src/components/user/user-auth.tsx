@@ -2,9 +2,8 @@ import { Button } from '@/components/ui/button'
 import { UserAvatar } from '@/components/user/user-avatar'
 import { createClient } from '@/lib/supabase/server'
 import Link from 'next/link'
-import * as React from 'react'
 
-async function UserAuth({ children }: { children?: React.ReactNode }) {
+async function UserAuth() {
   const supabase = createClient()
 
   const {
