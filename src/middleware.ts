@@ -13,7 +13,7 @@ export async function middleware(request: NextRequest) {
   if (user && requestedPathname === LOGIN_PATH)
     return NextResponse.redirect(new URL(HOME_PATH, request.url))
 
-  if (!user && requestedPathname !== LOGIN_PATH && requestedPathname !== HOME_PATH)
+  if (!user && requestedPathname !== LOGIN_PATH)
     return NextResponse.redirect(new URL(LOGIN_PATH, request.url))
 
   return response
