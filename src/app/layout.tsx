@@ -1,3 +1,4 @@
+import { AppProviders } from '@/components/providers/app-providers'
 import type { Metadata } from 'next'
 import { Poppins } from 'next/font/google'
 import * as React from 'react'
@@ -17,8 +18,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <body className={`${poppins.variable}`}>{children}</body>
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${poppins.variable}`}>
+        <AppProviders>{children}</AppProviders>
+      </body>
     </html>
   )
 }
