@@ -3,6 +3,9 @@
 @tailwind utilities;
 
 @layer base {
+    body {
+        @apply bg-white dark:bg-violet-950
+    }
     html, body {
         @apply h-full font-sans
     }
