@@ -6,17 +6,26 @@ const LOGIN_PATH = '/login'
 const HOME_PATH = '/'
 
 export async function middleware(request: NextRequest) {
-  const { auth, response } = await updateSession(request)
-  const user = auth.data.user
-  const requestedPathname = request.nextUrl.pathname
+  try {
+    const { auth, response } = await updateSession(request)
+    const user = auth.data.user
+    const requestedPathname = request.nextUrl.pathname
 
-  if (user && requestedPathname === LOGIN_PATH)
-    return NextResponse.redirect(new URL(HOME_PATH, request.url))
+    if (user && requestedPathname === LOGIN_PATH)
+      return NextResponse.redirect(new URL(HOME_PATH, request.url))
 
-  if (!user && requestedPathname !== LOGIN_PATH)
+    if (!user && requestedPathname !== LOGIN_PATH) {
+      const redirectUrl = new URL(LOGIN_PATH, request.url)
+      if (requestedPathname !== HOME_PATH)
+        redirectUrl.searchParams.append('next', requestedPathname)
+      return NextResponse.redirect(redirectUrl)
+    }
+
+    return response
+  } catch (error) {
+    if (error instanceof Error) console.log(error.message)
     return NextResponse.redirect(new URL(LOGIN_PATH, request.url))
-
-  return response
+  }
 }
 
 export const config = {
