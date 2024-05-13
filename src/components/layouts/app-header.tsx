@@ -12,11 +12,13 @@ export function AppHeader({ className }: HeaderProps) {
     <header className="relative h-20">
       <div
         className={cn(
-          'container flex h-full max-w-full items-center justify-between border-b border-neutral-200',
+          'container flex h-full max-w-full items-center justify-between border-b border-neutral-200 dark:border-neutral-800',
           className
         )}>
         <div className="max-w-24">
-          <Link href="/" className="shrink-0 text-xl font-bold text-violet-900">
+          <Link
+            href="/"
+            className="shrink-0 text-xl font-bold text-neutral-900 dark:text-neutral-200">
             <BalayLogo className="w-full" />
             <span className="sr-only">Balay home page</span>
           </Link>

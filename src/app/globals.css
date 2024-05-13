@@ -4,7 +4,7 @@
 
 @layer base {
     body {
-        @apply bg-white dark:bg-violet-950
+        @apply bg-white dark:bg-neutral-950
     }
     html, body {
         @apply h-full font-sans
