@@ -1,5 +1,5 @@
 import BalayLogo from '@/assets/icons/balay-logo.svg'
-import { UserAuth } from '@/components/user/user-auth'
+import { AuthUserMenu } from '@/components/auth/auth-user-menu'
 import { cn } from '@/lib/utils/class-name'
 import Link from 'next/link'
 
@@ -23,7 +23,7 @@ export function AppHeader({ className }: HeaderProps) {
         </div>
         <nav>nav links</nav>
         <div className="flex items-center gap-2.5">
-          <UserAuth />
+          <AuthUserMenu />
         </div>
       </div>
     </header>

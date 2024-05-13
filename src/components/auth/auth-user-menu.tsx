@@ -3,7 +3,7 @@ import { UserAvatar } from '@/components/user/user-avatar'
 import { createClient } from '@/lib/supabase/server'
 import Link from 'next/link'
 
-async function UserAuth() {
+async function AuthUserMenu() {
   const supabase = createClient()
 
   const {
@@ -20,4 +20,4 @@ async function UserAuth() {
   return <UserAvatar />
 }
 
-export { UserAuth }
+export { AuthUserMenu }
