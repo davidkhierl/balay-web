@@ -12,7 +12,7 @@ import { useTheme } from 'next-themes'
 import { forwardRef } from 'react'
 
 export const ThemeToggleButton = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
-  const { setTheme, theme } = useTheme()
+  const { setTheme } = useTheme()
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
