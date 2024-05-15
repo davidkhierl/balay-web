@@ -22,7 +22,7 @@ export default function LoginPage({
   searchParams: { [_key: string]: string | string[] | undefined }
 }) {
   const next = Array.isArray(searchParams.next) ? searchParams.next[0] : searchParams.next
-  const redirectTo = new URL('/auth/callback', getURL())
+  const redirectTo = new URL('/api/auth/callback', getURL())
   if (next) redirectTo.searchParams.append('next', next)
   return (
     <main className="relative h-dvh">
