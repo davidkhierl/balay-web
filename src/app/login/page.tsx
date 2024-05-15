@@ -1,5 +1,5 @@
-import LoginPageBG from '@/assets/images/login-bg.png'
-import { LoginForm } from '@/components/forms/login-form'
+import { AuthGoogleSignIn } from '@/components/auth/auth-google-sign-in'
+import { ThemeToggleButton } from '@/components/theme/theme-toggle-button'
 import {
   Card,
   CardContent,
@@ -8,33 +8,32 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card'
+import { getURL } from '@/lib/utils/get-url'
 import type { Metadata } from 'next'
-import Image from 'next/image'
 
 export const metadata: Metadata = {
   title: 'Login | Balay',
   description: 'Login to Balay',
 }
 
-export default function LoginPage() {
+export default function LoginPage({
+  searchParams,
+}: {
+  searchParams: { [_key: string]: string | string[] | undefined }
+}) {
+  const next = Array.isArray(searchParams.next) ? searchParams.next[0] : searchParams.next
+  const redirectTo = new URL('/auth/callback', getURL())
+  if (next) redirectTo.searchParams.append('next', next)
   return (
-    <main className="relative -mt-20 pt-20 supports-[height:100dvh]:h-[100dvh]">
-      <Image
-        src={LoginPageBG}
-        alt="login page background image"
-        fill
-        priority
-        style={{ objectFit: 'cover', objectPosition: 'bottom center' }}
-      />
-      <div className="absolute left-0 top-0 h-full w-full bg-gradient-to-b from-black/80 to-transparent" />
-      <div className="container relative flex h-full items-center justify-center py-4">
+    <main className="relative h-dvh">
+      <div className="container relative flex h-full flex-col items-center justify-center gap-4 py-4">
         <Card>
           <CardHeader>
-            <CardTitle>Log in or sign up in one click</CardTitle>
-            <CardDescription>Use your social account to continue with Balay!</CardDescription>
+            <CardTitle>Sign up in one click</CardTitle>
+            <CardDescription>Continue to Balay using your existing social account!</CardDescription>
           </CardHeader>
           <CardContent>
-            <LoginForm />
+            <AuthGoogleSignIn className="w-full" redirectTo={redirectTo.toString()} />
           </CardContent>
           <CardFooter>
             <p className="text-xs font-light text-slate-500">
@@ -42,6 +41,7 @@ export default function LoginPage() {
             </p>
           </CardFooter>
         </Card>
+        <ThemeToggleButton />
       </div>
     </main>
   )
