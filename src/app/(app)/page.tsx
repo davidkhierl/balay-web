@@ -1,25 +1,22 @@
-import { HouseholdInitialCreate } from '@/components/households/household-initial-create'
-import { getCurrentUser } from '@/lib/services/auth/get-current-user'
-import { userHouseholds } from '@/lib/services/household/user-households'
-import { createClient } from '@/lib/supabase/server'
+import BalayLogo from '@/assets/icons/balay-logo.svg'
+import { Button } from '@/components/ui/button'
+import { ChevronRight } from 'lucide-react'
+import Link from 'next/link'
 
 export default async function HomePage() {
-  const supabase = createClient()
-  const user = await getCurrentUser(supabase)
-  const { data: households } = await userHouseholds(user.id, supabase)
-
-  if (!households?.length)
-    return (
-      <div className="container flex min-h-[calc(100vh_-_80px)] items-center justify-center py-4">
-        <HouseholdInitialCreate />
-      </div>
-    )
-
   return (
-    <div>
-      {households.map((household) => (
-        <div key={household.id}>{household.id}</div>
-      ))}
+    <div className="h-[calc(100dvh_-_64px)] py-8">
+      <div className="container flex h-full flex-col items-center justify-center rounded-lg bg-neutral-50 shadow-md">
+        <h1 className="text-center text-lg md:text-3xl">Making Shared Living a Breeze</h1>
+        <BalayLogo className="w-full max-w-lg" />
+        <Button
+          asChild
+          className="mt-5"
+          icon={<ChevronRight className="h-5 w-5" />}
+          iconPlacement="right">
+          <Link href="/households">Your Households</Link>
+        </Button>
+      </div>
     </div>
   )
 }
