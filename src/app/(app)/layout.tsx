@@ -1,4 +1,4 @@
-import { AppHeader } from '@/components/layouts/app-header'
+import { AppHeader } from '@/components/layouts/app/header/app-header'
 import { ReactNode } from 'react'
 
 export default function AppLayout({ children }: { children?: ReactNode }) {
