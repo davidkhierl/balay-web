@@ -11,7 +11,7 @@ import { Monitor, Moon, Sun } from 'lucide-react'
 import { useTheme } from 'next-themes'
 import { forwardRef } from 'react'
 
-export const ThemeToggleButton = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
+export const ThemeDropdownMenu = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
   const { setTheme } = useTheme()
   return (
     <DropdownMenu>
@@ -21,7 +21,7 @@ export const ThemeToggleButton = forwardRef<HTMLButtonElement, ButtonProps>((pro
           <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
           <span className="sr-only">Toggle theme</span>
         </Button>
-      </DropdownMenuTrigger>{' '}
+      </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
         <DropdownMenuItem onClick={() => setTheme('light')}>
           <Sun className="mr-2 h-4 w-4" />
@@ -39,4 +39,4 @@ export const ThemeToggleButton = forwardRef<HTMLButtonElement, ButtonProps>((pro
     </DropdownMenu>
   )
 })
-ThemeToggleButton.displayName = 'ThemeToggleButton'
+ThemeDropdownMenu.displayName = 'ThemeDropdownMenu'
