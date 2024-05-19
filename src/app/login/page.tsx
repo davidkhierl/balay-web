@@ -1,5 +1,5 @@
 import { AuthGoogleSignIn } from '@/components/auth/auth-google-sign-in'
-import { ThemeToggleButton } from '@/components/theme/theme-toggle-button'
+import { ThemeDropdownMenu } from '@/components/theme/theme-dropdown-menu'
 import {
   Card,
   CardContent,
@@ -41,7 +41,7 @@ export default function LoginPage({
             </p>
           </CardFooter>
         </Card>
-        <ThemeToggleButton />
+        <ThemeDropdownMenu />
       </div>
     </main>
   )
