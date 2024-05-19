@@ -36,7 +36,7 @@ const AuthGoogleSignIn = React.forwardRef<HTMLButtonElement, ButtonProps & AuthG
     }
 
     return (
-      <Button ref={ref} variant="secondary" {...props} onClick={handleGoogleSignIn}>
+      <Button ref={ref} {...props} onClick={handleGoogleSignIn}>
         <FcGoogle size={24} />
         <span>Continue with Google</span>
       </Button>
