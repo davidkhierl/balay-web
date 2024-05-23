@@ -1,6 +1,6 @@
 import UserAvatar from '@/components/user/user-avatar'
+import { User } from '@/lib/schema/user.schema'
 import { cn } from '@/lib/utils/class-name'
-import { User } from '@/types/models.types'
 
 export interface UserProfileAvatarProps {
   user: User
