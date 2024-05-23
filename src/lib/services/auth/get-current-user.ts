@@ -1,7 +1,7 @@
+import { UnauthorizedError } from '@/lib/error/unauthorized-error'
+import { User } from '@/lib/schema/user.schema'
 import { getAuthUser } from '@/lib/services/auth/get-auth-user'
-import { UnauthorizedError } from '@/lib/services/error/unauthorized-error'
 import { getUser } from '@/lib/services/user/get-user'
-import { User } from '@/types/models.types'
 import { SupabaseClientDatabase } from '@/types/supabase.types'
 
 export async function getCurrentUser(supabase: SupabaseClientDatabase): Promise<User> {
