@@ -3,8 +3,10 @@ import { AuthUserMenu } from '@/components/auth/auth-user-menu'
 import { MobileMenu } from '@/components/layouts/app/header/mobile-menu/mobile-menu'
 import { navigationLinkItems } from '@/components/layouts/app/header/navigation-link-items'
 import { NavigationLinks } from '@/components/layouts/app/header/navigation-links'
+import { UserAvatarFallback } from '@/components/user/user-avatar-fallback'
 import { cn } from '@/lib/utils/class-name'
 import Link from 'next/link'
+import { ErrorBoundary } from 'react-error-boundary'
 
 export interface HeaderProps {
   className?: string
@@ -27,7 +29,9 @@ export function AppHeader({ className }: HeaderProps) {
             <MobileMenu navigationLinks={navigationLinkItems} />
           </div>
           <div className="hidden items-center gap-2.5 md:flex">
-            <AuthUserMenu className="h-10 w-10" />
+            <ErrorBoundary fallback={<UserAvatarFallback className="h-10 w-10" />}>
+              <AuthUserMenu className="h-10 w-10" />
+            </ErrorBoundary>
           </div>
         </div>
       </div>
