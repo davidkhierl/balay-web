@@ -1,7 +1,7 @@
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+import { User } from '@/lib/schema/user.schema'
 import { cn } from '@/lib/utils/class-name'
 import { getNameInitials } from '@/lib/utils/get-name-initials'
-import { User } from '@/types/models.types'
 
 export interface UserAvatarProps {
   user: User
