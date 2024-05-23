@@ -12,20 +12,27 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
+import { UserAvatarLoading } from '@/components/user/user-avatar-loading'
+import { UserProfileAvatarFallback } from '@/components/user/user-profile-avatar-fallback'
+import { UserProfileAvatarLoading } from '@/components/user/user-profile-avatar-loading'
 import { cn } from '@/lib/utils/class-name'
 import { ChevronRight } from 'lucide-react'
 import Link from 'next/link'
+import { Suspense } from 'react'
+import { ErrorBoundary } from 'react-error-boundary'
 
 export interface AuthUserMenuProps {
   className?: string
 }
 
-export async function AuthUserMenu({ className }: AuthUserMenuProps) {
+export function AuthUserMenu({ className }: AuthUserMenuProps) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button className={cn('h-14 w-14 rounded-full p-0', className)} variant="ghost">
-          <AuthUserAvatar className="h-full w-full" />
+          <Suspense fallback={<UserAvatarLoading className="h-full w-full" />}>
+            <AuthUserAvatar className="h-full w-full" />
+          </Suspense>
           <span className="sr-only">user profile</span>
         </Button>
       </DropdownMenuTrigger>
@@ -34,7 +41,11 @@ export async function AuthUserMenu({ className }: AuthUserMenuProps) {
           <DropdownMenuLabel>Account</DropdownMenuLabel>
           <DropdownMenuItem asChild>
             <Link href="/account" className="flex items-center justify-between gap-2.5">
-              <AuthUserProfileAvatar className="items-center" />
+              <ErrorBoundary fallback={<UserProfileAvatarFallback />}>
+                <Suspense fallback={<UserProfileAvatarLoading />}>
+                  <AuthUserProfileAvatar className="items-center" />{' '}
+                </Suspense>
+              </ErrorBoundary>
               <ChevronRight className="h-5 w-5" />
             </Link>
           </DropdownMenuItem>
