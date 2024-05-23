@@ -9,16 +9,51 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
+      household_members: {
+        Row: {
+          created_at: string
+          household_id: string
+          id: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          household_id: string
+          id?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          household_id?: string
+          id?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "public_household_members_household_id_fkey"
+            columns: ["household_id"]
+            isOneToOne: false
+            referencedRelation: "households"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "public_household_members_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       households: {
         Row: {
           address: string
           created_at: string
           id: string
-          lat: string
-          lng: string
-          location: string
           name: string
-          place_id: string
           updated_at: string
           user_id: string
         }
@@ -26,11 +61,7 @@ export type Database = {
           address: string
           created_at?: string
           id?: string
-          lat: string
-          lng: string
-          location: string
           name: string
-          place_id: string
           updated_at?: string
           user_id: string
         }
@@ -38,11 +69,7 @@ export type Database = {
           address?: string
           created_at?: string
           id?: string
-          lat?: string
-          lng?: string
-          location?: string
           name?: string
-          place_id?: string
           updated_at?: string
           user_id?: string
         }
@@ -50,7 +77,7 @@ export type Database = {
           {
             foreignKeyName: "public_households_user_id_fkey"
             columns: ["user_id"]
-            isOneToOne: true
+            isOneToOne: false
             referencedRelation: "users"
             referencedColumns: ["id"]
           },
