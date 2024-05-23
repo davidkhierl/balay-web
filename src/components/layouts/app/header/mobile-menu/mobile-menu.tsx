@@ -9,8 +9,12 @@ import { NavigationLinkItem } from '@/components/layouts/app/header/navigation-l
 import { ThemeToggleGroup } from '@/components/theme/theme-toggle-group'
 import { Button } from '@/components/ui/button'
 import { DialogTrigger } from '@/components/ui/dialog'
+import { UserProfileAvatarFallback } from '@/components/user/user-profile-avatar-fallback'
+import { UserProfileAvatarLoading } from '@/components/user/user-profile-avatar-loading'
 import { ChevronRight, Menu } from 'lucide-react'
 import Link from 'next/link'
+import { Suspense } from 'react'
+import { ErrorBoundary } from 'react-error-boundary'
 
 export interface MobileMenuProps {
   navigationLinks?: NavigationLinkItem[]
@@ -33,7 +37,11 @@ export function MobileMenu({ navigationLinks }: MobileMenuProps) {
           <Link
             href="/account"
             className="flex items-center justify-between gap-2.5 rounded-2xl border p-4 transition-colors hover:bg-neutral-100 dark:border-neutral-800 dark:hover:bg-neutral-800">
-            <AuthUserProfileAvatar className="items-center" />
+            <ErrorBoundary fallback={<UserProfileAvatarFallback />}>
+              <Suspense fallback={<UserProfileAvatarLoading />}>
+                <AuthUserProfileAvatar />
+              </Suspense>
+            </ErrorBoundary>
             <ChevronRight className="h-5 w-5" />
           </Link>
           <ThemeToggleGroup />
