@@ -1,4 +1,5 @@
 import { Button } from '@/components/ui/button'
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
 import { getCurrentUserHouseholds } from '@/lib/services/household/get-current-user-households'
 import { createClient } from '@/lib/supabase/server'
 import { PlusCircle } from 'lucide-react'
@@ -20,6 +21,7 @@ export default async function HouseholdsPage() {
               <Button asChild className="w-full">
                 <Link href="/households/new">Create</Link>
               </Button>
+
               <span className="text-center text-xs">or</span>
               <Button asChild className="w-full" variant="outline">
                 <Link href="/households/new">Join</Link>
@@ -32,14 +34,23 @@ export default async function HouseholdsPage() {
 
   return (
     <div className="app-page container grid auto-rows-[96px] gap-5 py-10 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
-      <Button
-        asChild
-        variant="outline"
-        className="flex h-24 items-center justify-center rounded-md border border-dashed border-neutral-200 text-neutral-200 dark:border-neutral-800 dark:text-neutral-800">
-        <Link href="/households/new">
-          <PlusCircle className="h-12 w-12" strokeWidth={1} />
-        </Link>
-      </Button>
+      <TooltipProvider>
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <Button
+              asChild
+              variant="outline"
+              className="flex h-24 items-center justify-center rounded-md border border-dashed border-neutral-200 text-neutral-200 dark:border-neutral-800 dark:text-neutral-800">
+              <Link href="/households/new">
+                <PlusCircle className="h-12 w-12" strokeWidth={1} />
+              </Link>
+            </Button>
+          </TooltipTrigger>
+          <TooltipContent>
+            <p>Create new household</p>
+          </TooltipContent>
+        </Tooltip>
+      </TooltipProvider>
       {households.map((household) => (
         <div key={household.id}>{household.name}</div>
       ))}
