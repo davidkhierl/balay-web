@@ -1,3 +1,4 @@
+import { HouseholdGridItem } from '@/components/household/household-grid-item'
 import { Button } from '@/components/ui/button'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
 import { getCurrentUserHouseholds } from '@/lib/services/household/get-current-user-households'
@@ -33,27 +34,29 @@ export default async function HouseholdsPage() {
     )
 
   return (
-    <div className="app-page container grid auto-rows-[96px] gap-5 py-10 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
-      <TooltipProvider>
-        <Tooltip>
-          <TooltipTrigger asChild>
-            <Button
-              asChild
-              variant="outline"
-              className="flex h-24 items-center justify-center rounded-md border border-dashed border-neutral-200 text-neutral-200 dark:border-neutral-800 dark:text-neutral-800">
-              <Link href="/households/new">
-                <PlusCircle className="h-12 w-12" strokeWidth={1} />
-              </Link>
-            </Button>
-          </TooltipTrigger>
-          <TooltipContent>
-            <p>Create new household</p>
-          </TooltipContent>
-        </Tooltip>
-      </TooltipProvider>
-      {households.map((household) => (
-        <div key={household.id}>{household.name}</div>
-      ))}
+    <div className="app-page container max-w-screen-2xl">
+      <section className="grid auto-rows-[96px] grid-cols-1 gap-10 py-10 md:grid-cols-[repeat(auto-fill,minmax(330px,1fr))]">
+        <TooltipProvider>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Button
+                asChild
+                variant="outline"
+                className="flex h-24 items-center justify-center rounded-md border border-dashed border-neutral-200 text-neutral-200 dark:border-neutral-800 dark:text-neutral-800">
+                <Link href="/households/new">
+                  <PlusCircle className="h-12 w-12" strokeWidth={1} />
+                </Link>
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent>
+              <p>Create new household</p>
+            </TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
+        {households.map((household) => (
+          <HouseholdGridItem key={household.id} household={household} />
+        ))}
+      </section>
     </div>
   )
 }
