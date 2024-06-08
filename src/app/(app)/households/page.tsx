@@ -32,9 +32,14 @@ export default async function HouseholdsPage() {
 
   return (
     <div className="app-page container grid auto-rows-[96px] gap-5 py-10 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
-      <div className="flex h-24 items-center justify-center rounded-md border border-dashed border-neutral-200 dark:border-neutral-800">
-        <PlusCircle className="h-12 w-12 text-neutral-200 dark:text-neutral-800" />
-      </div>
+      <Button
+        asChild
+        variant="outline"
+        className="flex h-24 items-center justify-center rounded-md border border-dashed border-neutral-200 text-neutral-200 dark:border-neutral-800 dark:text-neutral-800">
+        <Link href="/households/new">
+          <PlusCircle className="h-12 w-12" strokeWidth={1} />
+        </Link>
+      </Button>
       {households.map((household) => (
         <div key={household.id}>{household.name}</div>
       ))}
