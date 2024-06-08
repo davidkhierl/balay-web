@@ -6,6 +6,7 @@ import { useFormStatus } from 'react-dom'
 
 export const FormSubmitButton = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
   const { pending } = useFormStatus()
-  return <Button ref={ref} type="submit" {...props} isLoading={pending} />
+
+  return <Button ref={ref} type="submit" isLoading={pending} {...props} />
 })
 FormSubmitButton.displayName = 'FormSubmitButton'

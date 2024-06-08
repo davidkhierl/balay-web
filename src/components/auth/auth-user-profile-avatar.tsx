@@ -1,5 +1,5 @@
 import { UserProfileAvatar } from '@/components/user/user-profile-avatar'
-import { getCurrentUser } from '@/lib/services/auth/get-current-user'
+import { getCurrentUser } from '@/lib/services/user/get-current-user'
 import { createClient } from '@/lib/supabase/server'
 
 export interface AuthUserProfileAvatarProps {
@@ -8,9 +8,9 @@ export interface AuthUserProfileAvatarProps {
 
 export async function AuthUserProfileAvatar({ className }: AuthUserProfileAvatarProps) {
   const supabase = createClient()
-  const user = await getCurrentUser(supabase)
+  const { data: user, error } = await getCurrentUser(supabase)
 
-  if (!user) throw new Error('Error loading current user')
+  if (error) throw error
 
   return <UserProfileAvatar user={user} className={className} />
 }

@@ -10,3 +10,13 @@
         @apply h-full font-sans
     }
 }
+
+@layer components {
+    .app-header {
+        @apply h-16
+    }
+
+    .app-page {
+        @apply min-h-[calc(100dvh-theme('spacing.16'))]
+    }
+}

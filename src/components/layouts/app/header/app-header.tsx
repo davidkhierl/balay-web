@@ -14,7 +14,7 @@ export interface HeaderProps {
 
 export function AppHeader({ className }: HeaderProps) {
   return (
-    <header className={cn('relative h-16', className)}>
+    <header className={cn('app-header relative', className)}>
       <div className="container flex h-full max-w-full items-center justify-between gap-10 border-b border-neutral-200 px-2 dark:border-neutral-800 md:px-8">
         <Link
           href="/"

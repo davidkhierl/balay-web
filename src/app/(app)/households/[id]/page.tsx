@@ -10,8 +10,7 @@ export default async function HouseholdPage({ params }: { params: { id: string }
 
   return (
     <div>
-      {household.name}
-      <div className="container flex gap-5"></div>
+      <div className="container flex gap-5">{household.name}</div>
     </div>
   )
 }
