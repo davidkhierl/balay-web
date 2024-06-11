@@ -9,9 +9,9 @@ export interface HouseholdGridItemProps {
 
 export function HouseholdGridItem({ className, household }: HouseholdGridItemProps) {
   return (
-    <div className={cn('relative', className)}>
-      <div className="h-full rounded-lg border border-neutral-200 px-6 py-5 transition-colors hover:border-neutral-300 dark:border-neutral-800 dark:bg-neutral-900/50 dark:hover:border-neutral-700">
-        <p>{household.name}</p>
+    <div className={cn('group relative', className)}>
+      <div className="relative h-full rounded-lg border border-neutral-200 px-6 py-5 transition-colors group-hover:border-neutral-300 dark:border-neutral-800 dark:bg-neutral-900/50 dark:group-hover:border-neutral-700">
+        <p className="text-sm">{household.name}</p>
         <p className="text-sm text-neutral-500">{household.address}</p>
       </div>
       <Link

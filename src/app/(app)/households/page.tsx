@@ -42,7 +42,7 @@ export default async function HouseholdsPage() {
               <Button
                 asChild
                 variant="outline"
-                className="flex h-24 items-center justify-center rounded-md border border-dashed border-neutral-200 text-neutral-200 dark:border-neutral-800 dark:text-neutral-800">
+                className="flex h-24 items-center justify-center rounded-md border border-dashed border-neutral-200 text-neutral-200 hover:border-neutral-300 hover:bg-transparent hover:text-neutral-300 dark:border-neutral-800 dark:text-neutral-800 dark:hover:border-neutral-700 dark:hover:bg-neutral-950 dark:hover:text-neutral-700">
                 <Link href="/households/new">
                   <PlusCircle className="h-12 w-12" strokeWidth={1} />
                 </Link>
