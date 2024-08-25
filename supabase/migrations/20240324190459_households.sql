@@ -92,5 +92,4 @@ to authenticated
 using ((auth.uid() = user_id))
 with check ((auth.uid() = user_id));
 
-
-
+CREATE TRIGGER on_change_household_updated_at BEFORE UPDATE ON public.households FOR EACH ROW EXECUTE FUNCTION moddatetime('updated_at');
